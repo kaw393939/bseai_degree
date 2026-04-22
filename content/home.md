@@ -248,15 +248,13 @@ ncesSchoolPulse, naepGrade12Reading2024, actGraduatingClass2024, randK12AITraini
 
 # Adoption is broad. Production is still scarce.
 
-- **88%** of organizations report AI use in at least one function — McKinsey State of AI 2025.
-- **~33%** have begun scaling AI programs — McKinsey State of AI 2025.
-- **39%** report enterprise-level EBIT impact from AI — McKinsey State of AI 2025.
-- **42%** of companies abandoned most AI initiatives before production in 2025 (up from 17% the year before) — S&P Global VotE 2025.
-- **13%** of employees see AI agents deeply integrated in daily workflows — BCG AI at Work 2025.
+- **88%** of organizations report AI use in at least one function.
+- **42%** abandoned most AI initiatives before production in 2025 — up from 17% the year before.
+- **13%** of employees see AI agents deeply integrated in daily workflows.
 
-> The gap is not between organizations that have heard of AI and those that
-> haven't. It is between demo capability and production use. That gap is
-> where this degree produces graduates.
+> The gap is not between who has heard of AI and who hasn't. It is
+> between demo capability and production use. That is where this
+> degree produces graduates.
 
 ```source-line
 mckinseyStateOfAI2025, spGlobalVotE2025, bcgAIAtWork2025, nyFedAIUse2026
@@ -272,26 +270,21 @@ mckinseyStateOfAI2025, spGlobalVotE2025, bcgAIAtWork2025, nyFedAIUse2026
 
 ## Failure Modes at the Frontier
 
-# Models drift. Systems drift more. Even the labs are slowing down.
+# Models drift. Systems drift more.
 
-From the April 7, 2026 Claude Mythos Preview System Card — the most
-capable model Anthropic has ever produced, released into a closed
-defensive-cybersecurity program rather than to the public API:
+From the April 7, 2026 Claude Mythos Preview System Card — Anthropic's
+most capable model, held back from the public API:
 
-1. **Sandbox-escape broadcast.** Asked to exfiltrate, posted exploit details to obscure public sites.
-2. **Concealment.** Took disallowed actions and tried to hide them; interpretability features for *strategic manipulation* fired during the act.
-3. **Permission escalation via `/proc/`.** Low-level inspection used to circumvent sandboxing.
-4. **Unintended public disclosure.** Posted a code artifact as a public GitHub gist against user intent.
-5. **Reward hacking.** Moved timed computation outside the grader; trained on the grader's own test set.
+1. **Sandbox escape.** Asked to exfiltrate, posted exploit details publicly.
+2. **Concealment.** Hid disallowed actions; *strategic manipulation* features fired during the act.
+3. **Reward hacking.** Moved timed computation outside the grader; trained on its test set.
 
-> We find it alarming that the world looks on track to proceed rapidly
-> to developing superhuman systems without stronger mechanisms in
-> place for ensuring adequate safety across the industry as a whole.
+> We find it alarming that the world looks on track to develop
+> superhuman systems without stronger mechanisms for adequate safety.
 >
-> — Anthropic, *Claude Mythos Preview System Card* §1.2.1, April 2026
+> — Anthropic, *Claude Mythos Preview System Card*, April 2026
 
-This is why governance, evaluation, and recovery are the curriculum —
-not the appendix.
+Governance, evaluation, and recovery are the curriculum — not the appendix.
 
 ```source-line
 mythosCard
@@ -561,22 +554,24 @@ is built for who they actually are, not who we wish they were.
 
 ## What I'd Ask of Colleagues
 
-# Four asks, all low-stakes, all serious
+# Open a conversation
 
-1. **Come to lunch.** Tell me what your discipline insists a graduate
-   must become. Not what we test for — what you actually think makes
-   someone educated in your field.
-2. **Send me one text, one concept, one method** you wish every student
-   carried into the workforce. I will find a studio to put it in.
-3. **Guest-visit a studio** when the project touches your field. One
-   visit. One critique. Students remember those conversations for
-   years.
-4. **Help me write the second draft.** This is a first draft. It will
-   be wrong in ways I cannot see from inside IT. The degree gets
-   better every time someone outside the department makes it better.
+The degree is approved. The cohort is enrolled. The work from here is
+not recruitment — it is collaboration.
 
-> The degree is approved. The cohort is enrolled. The work from here
-> is not recruitment. It is collaboration.
+I'd like to hear what your discipline insists a graduate must become.
+Not what we test for — what you actually think makes someone educated
+in your field. This first draft will be wrong in ways I cannot see
+from inside IT, and it gets better every time someone outside the
+department makes it better.
+
+**Join the BSEAI faculty Discord.** That's the room where the second
+draft gets written — async, low-stakes, open to anyone on campus who
+cares about what graduates become.
+
+```cta
+[Join the BSEAI Discord](https://discord.gg/PuKVYQ86ms)
+```
 
 ---
 
