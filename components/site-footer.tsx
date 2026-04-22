@@ -35,7 +35,7 @@ export function SiteFooter({ mode = "standard" }: SiteFooterProps) {
           </div>
         ) : (
           <div className="site-footer__brand">
-            <img src="/logo.svg" alt="NJIT" className="site-footer__logo" />
+            <img src="/njit_logo.svg" alt="NJIT" className="site-footer__logo" />
             <div className="site-footer__brand-copy">
               <p className="site-footer__label">NJIT</p>
               <p className="site-footer__title">B.S. in Enterprise AI</p>
