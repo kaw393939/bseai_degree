@@ -188,6 +188,27 @@ visibly, in every studio.
 
 ---
 
+## You Don't Race a Bugatti on Foot
+
+# Frontier models are fast at implementation over short horizons. That is their Bugatti.
+
+Trying to out-code, out-type, or out-implement a frontier model on the
+things it is good at is a career mistake. That race is already lost,
+for everyone, and it was never the race that mattered.
+
+The work is not racing the machine. The work is **driving** it:
+
+- **Specifying** where it goes — scope, intent, acceptance.
+- **Evaluating** whether it got there — evidence, tests, judgment.
+- **Governing** what it's allowed to do — guardrails, oversight, accountability.
+- **Steering** when it drifts — recovery, revision, stop conditions.
+
+> BSEAI does not train students to race the Bugatti.
+> It trains them to drive it, know when it's lying about fuel, and
+> know when to get out and walk.
+
+---
+
 ![split-reverse](/images/media/modules/generated/openai-public-ai.webp)
 
 ## The Enterprise Bottleneck
@@ -376,6 +397,34 @@ linkedinLabor2026, openAIApplied, scaleFDEPosting, openAIFDEPosting, salesforceA
 
 ---
 
+## Inquiry Is the Method
+
+# The 60% is built one good question at a time
+
+The degree is organized around **asking** — of AI, of stakeholders, of
+data, of self. A student who asks good questions does the 60% every
+time they open their mouth or their keyboard.
+
+That is why **IS 117 — Web Development and Inquiry** is now the first
+course. The habit is set where habits get set: at the beginning.
+
+- **Inquiry of AI** — prompt, probe, challenge, verify. Treat model
+  output as a draft, not a verdict.
+- **Inquiry of stakeholders** — what does the person actually need, and
+  what are they not saying?
+- **Inquiry of data** — what is this measurement really measuring, and
+  what is it missing?
+- **Inquiry of self** — what am I assuming, and what would change my
+  mind?
+
+> Eight studios. One portfolio. A visible record of a student's
+> questions getting sharper over four years.
+>
+> That portfolio — not the tool of the moment — is what graduates
+> carry into the workforce.
+
+---
+
 ## The Studio Spine Builds toward That Work
 
 # The studios are where the 60% gets built
@@ -385,7 +434,8 @@ linkedinLabor2026, openAIApplied, scaleFDEPosting, openAIFDEPosting, salesforceA
 
 > Each course produces a portfolio artifact — an interface, a connector, an
 > eval harness, a requirements package, a data model, or a deployment
-> blueprint. That is the studio claim, made visible.
+> blueprint. Across eight studios, those artifacts become a record of a
+> student's inquiry maturing. The portfolio is the claim, made visible.
 
 ```source-line
 deepResearch3, njitBSEAIProgramPage, linkedinLabor2026
