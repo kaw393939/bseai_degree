@@ -74,14 +74,11 @@ sweBenchVerified, sweBenchSite, gpqaPaper, aiIndex2025
 
 ## What Just Happened, 2023–2026
 
-# Three very different kinds of work, rising into the same ceiling in three years
-
 ```model-progress
 ```
 
-Scores above roughly 90% — the green band — are where researchers
-consider a benchmark saturated. MMLU was already there. GPQA and
-SWE-bench Verified climbed into it from very different starting points.
+Scores inside the green band (≥ 90%) are where researchers consider a
+benchmark saturated.
 
 ```source-line
 benchmarksLocal, mythosCard, sweBenchVerified, gpqaPaper, aiIndex2025

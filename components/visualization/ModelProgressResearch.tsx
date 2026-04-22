@@ -37,7 +37,7 @@ const series: Series[] = [
   {
     key: 'swe-verified',
     label: 'SWE-bench Verified',
-    note: 'software engineering — fixing real GitHub issues',
+    note: 'software engineering',
     color: '#8a3a1f',
     points: [
       { year: 2024, score: 33.2 },
@@ -48,7 +48,7 @@ const series: Series[] = [
   {
     key: 'gpqa',
     label: 'GPQA Diamond',
-    note: 'hard-science reasoning — PhD physics, chem, bio',
+    note: 'hard-science reasoning',
     color: '#6f4a8f',
     points: [
       { year: 2023, score: 39.0 },
@@ -60,7 +60,7 @@ const series: Series[] = [
   {
     key: 'mmlu',
     label: 'MMLU',
-    note: 'broad knowledge QA — already a leading indicator',
+    note: 'broad knowledge QA',
     color: '#2d5f4a',
     points: [
       { year: 2023, score: 86.4 },
@@ -185,7 +185,7 @@ export function ModelProgressResearch() {
             ≥ 90% · SATURATION
           </text>
 
-          {/* Y ticks + gridlines */}
+          {/* Y ticks + gridlines — skip the 90 label since the ceiling band already marks it */}
           {yTicks.map((t) => (
             <g key={`y-${t}`}>
               <line
@@ -196,15 +196,17 @@ export function ModelProgressResearch() {
                 stroke="rgba(31, 26, 22, 0.06)"
                 strokeWidth="1"
               />
-              <text
-                x={padLeft - 12}
-                y={yFor(t) + 4}
-                textAnchor="end"
-                fontSize="13"
-                fill="rgba(31, 26, 22, 0.62)"
-              >
-                {t}
-              </text>
+              {t !== 90 && (
+                <text
+                  x={padLeft - 12}
+                  y={yFor(t) + 4}
+                  textAnchor="end"
+                  fontSize="13"
+                  fill="rgba(31, 26, 22, 0.62)"
+                >
+                  {t}
+                </text>
+              )}
             </g>
           ))}
 
@@ -244,7 +246,10 @@ export function ModelProgressResearch() {
             </g>
           ))}
 
-          {/* Series lines + terminal/start value callouts only */}
+          {/* Series lines + terminal/start value callouts only.
+              SWE-bench and GPQA both terminate in 2026 inside the ceiling
+              band — their end labels collide unless staggered. Per-series
+              offsets solve it deterministically. */}
           {series.map((s) => {
             const pts = s.points;
             const first = pts[0];
@@ -253,15 +258,24 @@ export function ModelProgressResearch() {
               .map((p, i) => `${i === 0 ? 'M' : 'L'} ${xFor(p.year)} ${yFor(p.score)}`)
               .join(' ');
 
-            // Label placement: start score sits on the open side (below if
-            // the start is already high like MMLU, above otherwise). End
-            // score sits just above the last dot.
+            // Start-label placement: below the dot if start score is already
+            // high (MMLU starts in the band), above otherwise.
             const startAbove = first.score < 70;
             const startLabelY = yFor(first.score) + (startAbove ? -14 : 22);
             const startAnchor = first.year === xMin ? 'start' : 'middle';
             const startX = first.year === xMin ? xFor(first.year) + 12 : xFor(first.year);
-            const endAnchor = last.year === xMax ? 'end' : 'middle';
-            const endX = last.year === xMax ? xFor(last.year) - 10 : xFor(last.year);
+
+            // End-label placement: stagger 2026 terminations. SWE-bench end
+            // sits below-right of its dot; GPQA end sits above-right. MMLU
+            // ends in 2025 so it gets the natural above-center position.
+            const endConfig: Record<string, { dx: number; dy: number; anchor: 'start' | 'middle' | 'end' }> = {
+              'swe-verified': { dx: -6, dy: 24, anchor: 'end' },   // below-left of 2026 dot
+              gpqa:           { dx: -6, dy: -14, anchor: 'end' },  // above-left of 2026 dot
+              mmlu:           { dx:  0, dy: -14, anchor: 'middle' },
+            };
+            const ec = endConfig[s.key] ?? { dx: 0, dy: -14, anchor: 'middle' };
+            const endX = xFor(last.year) + ec.dx;
+            const endY = yFor(last.score) + ec.dy;
 
             return (
               <g key={s.key}>
@@ -320,8 +334,8 @@ export function ModelProgressResearch() {
                 <circle cx={xFor(last.year)} cy={yFor(last.score)} r={8} fill={s.color} />
                 <text
                   x={endX}
-                  y={yFor(last.score) - 14}
-                  textAnchor={endAnchor}
+                  y={endY}
+                  textAnchor={ec.anchor}
                   fontSize="14"
                   fontWeight="700"
                   fill={s.color}
