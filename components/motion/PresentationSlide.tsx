@@ -27,8 +27,14 @@ export function PresentationSlide({ children, index, backgroundColor, hasBackgro
     offset: ["start end", "end end"]
   });
 
+  // Slide 1 always loads with scrollY at or near 0, which would land
+  // scroll-progress-driven reveals partway through their range. Skip
+  // the slide-context for index 0 so Reveal/SceneCard fall back to the
+  // viewport-on-mount path (clean fade-in on page load).
+  const contextValue = index === 0 ? { scrollYProgress: null } : { scrollYProgress };
+
   return (
-    <SlideContext.Provider value={{ scrollYProgress }}>
+    <SlideContext.Provider value={contextValue}>
       <section 
         ref={sectionRef}
         id={`slide-${index + 1}`}
