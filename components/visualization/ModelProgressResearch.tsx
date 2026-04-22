@@ -3,42 +3,98 @@
 import React from 'react';
 import { SourceLine } from '../ui/SourceLine';
 
-type Point = number | null; // null renders a gap
+/**
+ * Error-collapse chart.
+ *
+ * We plot *remaining error* (100 − score) instead of raw score. The editorial
+ * argument — "three different kinds of work, failure rates cut ~90% in under
+ * three years" — is an argument about error collapse, not a climb. Inverting
+ * the axis makes the lines fall, which is literally the thing the viewer is
+ * supposed to see.
+ *
+ * Three benchmarks only, each with a clean ≥3-point trajectory:
+ *   SWE-bench Verified  — software-engineering agents
+ *   GPQA Diamond        — graduate-level hard-science reasoning
+ *   MMLU                — broad knowledge QA (saturation reference)
+ *
+ * SWE-bench (original), HumanEval, and MMMU are dropped — gaps or early
+ * termination split attention. Full underlying table: /model-progress-research.
+ */
+
+type Point = { year: number; score: number };
 
 interface Series {
   key: string;
   label: string;
+  note: string;
   color: string;
-  values: Point[]; // aligned to years
+  points: Point[];
 }
-
-const years = [2023, 2024, 2025, 2026] as const;
 
 const series: Series[] = [
-  { key: 'swe-bench',          label: 'SWE-bench (original)',    color: '#6f391e', values: [1.96, 20.0, null, 77.83] },
-  { key: 'swe-bench-verified', label: 'SWE-bench Verified',      color: '#8d4e2f', values: [null, 33.2, 80.9, 93.9] },
-  { key: 'humaneval',          label: 'HumanEval',               color: '#2e6b68', values: [67.0, 93.7, null, null] },
-  { key: 'mmlu',               label: 'MMLU',                    color: '#c57b4a', values: [86.4, 90.4, 93.4, null] },
-  { key: 'gpqa',               label: 'GPQA Diamond',            color: '#8a5a9c', values: [39.0, 59.4, 86.95, 94.5] },
-  { key: 'mmmu',               label: 'MMMU',                    color: '#4a6c8a', values: [null, 68.3, 84.2, null] },
+  {
+    key: 'swe-verified',
+    label: 'SWE-bench Verified',
+    note: 'software engineering',
+    color: '#8a3a1f',
+    points: [
+      { year: 2024, score: 33.2 },
+      { year: 2025, score: 80.9 },
+      { year: 2026, score: 93.9 },
+    ],
+  },
+  {
+    key: 'gpqa',
+    label: 'GPQA Diamond',
+    note: 'hard-science reasoning',
+    color: '#6f4a8f',
+    points: [
+      { year: 2023, score: 39.0 },
+      { year: 2024, score: 59.4 },
+      { year: 2025, score: 86.95 },
+      { year: 2026, score: 94.5 },
+    ],
+  },
+  {
+    key: 'mmlu',
+    label: 'MMLU',
+    note: 'broad knowledge QA',
+    color: '#2d5f4a',
+    points: [
+      { year: 2023, score: 86.4 },
+      { year: 2024, score: 90.4 },
+      { year: 2025, score: 93.4 },
+    ],
+  },
 ];
 
-const width = 880;
+const width = 900;
 const height = 460;
-const padding = { top: 56, right: 32, bottom: 64, left: 64 };
-const yMin = 0;
-const yMax = 100;
+const padding = { top: 52, right: 200, bottom: 64, left: 78 };
+const yearMin = 2023;
+const yearMax = 2026;
+const errMin = 0;
+const errMax = 70;
 
-function xFor(index: number) {
-  return padding.left + (index / (years.length - 1)) * (width - padding.left - padding.right);
+function xFor(year: number) {
+  return (
+    padding.left +
+    ((year - yearMin) / (yearMax - yearMin)) * (width - padding.left - padding.right)
+  );
 }
-function yFor(v: number) {
-  return height - padding.bottom - ((v - yMin) / (yMax - yMin)) * (height - padding.top - padding.bottom);
+function yFor(error: number) {
+  return (
+    padding.top +
+    ((error - errMin) / (errMax - errMin)) * (height - padding.top - padding.bottom)
+  );
 }
+
+const saturationTop = yFor(10);
+const saturationBottom = yFor(0);
+const yTicks = [0, 10, 25, 50, 70];
+const yearTicks = [2023, 2024, 2025, 2026];
 
 export function ModelProgressResearch() {
-  const yTicks = [0, 25, 50, 75, 100];
-
   return (
     <div
       className="gpu-accelerated"
@@ -47,32 +103,38 @@ export function ModelProgressResearch() {
       <div
         className="model-progress-panel"
         style={{
-          width: 'min(100%, 74rem)',
+          width: 'min(100%, 78rem)',
           display: 'grid',
-          gap: '1rem',
-          padding: '1.25rem 1.5rem 1.25rem',
+          gap: '0.9rem',
+          padding: '1.5rem 1.75rem 1.25rem',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-          <div style={{ maxWidth: '44rem' }}>
-            <p className="eyebrow model-progress-panel__eyebrow">
-              Public milestone scores · Not a single-harness re-run
-            </p>
-          </div>
-          <p className="model-progress-panel__frame">
-            Software engineering, hard-science reasoning, coding, knowledge QA,
-            and multimodal reasoning all moved sharply between 2023 and 2026.
-          </p>
-        </div>
-
         <svg
           width="100%"
           viewBox={`0 0 ${width} ${height}`}
           preserveAspectRatio="xMidYMid meet"
           role="img"
-          aria-label="Public milestone benchmark scores across 2023 to 2026"
+          aria-label="Remaining error on SWE-bench Verified, GPQA Diamond, and MMLU collapsed from roughly 61 to 6 percent between 2023 and 2026."
           style={{ overflow: 'visible' }}
         >
+          <rect
+            x={padding.left}
+            y={saturationTop}
+            width={width - padding.left - padding.right}
+            height={saturationBottom - saturationTop}
+            fill="rgba(45, 95, 74, 0.10)"
+          />
+          <text
+            x={padding.left + 10}
+            y={saturationTop - 8}
+            fontSize="13"
+            fill="rgba(45, 95, 74, 0.85)"
+            fontWeight="600"
+            letterSpacing="0.08em"
+          >
+            SATURATION FLOOR · &lt; 10% ERROR
+          </text>
+
           {yTicks.map((tick) => (
             <g key={tick}>
               <line
@@ -83,113 +145,145 @@ export function ModelProgressResearch() {
                 stroke="rgba(31, 26, 22, 0.08)"
                 strokeWidth="1"
               />
-              <text x={padding.left - 12} y={yFor(tick) + 4} textAnchor="end" fill="rgba(31, 26, 22, 0.7)" fontSize="12">
-                {tick}
+              <text
+                x={padding.left - 14}
+                y={yFor(tick) + 5}
+                textAnchor="end"
+                fill="rgba(31, 26, 22, 0.7)"
+                fontSize="15"
+              >
+                {tick}%
               </text>
             </g>
           ))}
 
-          {years.map((year, index) => (
+          <text
+            x={24}
+            y={height / 2}
+            fill="rgba(31, 26, 22, 0.75)"
+            fontSize="13"
+            fontWeight="600"
+            letterSpacing="0.08em"
+            transform={`rotate(-90 24 ${height / 2})`}
+            textAnchor="middle"
+          >
+            % REMAINING ERROR (100 − score)
+          </text>
+
+          {yearTicks.map((year) => (
             <g key={year}>
               <line
-                x1={xFor(index)}
+                x1={xFor(year)}
                 y1={padding.top}
-                x2={xFor(index)}
+                x2={xFor(year)}
                 y2={height - padding.bottom}
                 stroke="rgba(31, 26, 22, 0.06)"
                 strokeWidth="1"
               />
-              <text x={xFor(index)} y={height - 20} textAnchor="middle" fill="rgba(31, 26, 22, 0.7)" fontSize="12">
+              <text
+                x={xFor(year)}
+                y={height - padding.bottom + 26}
+                textAnchor="middle"
+                fill="rgba(31, 26, 22, 0.78)"
+                fontSize="16"
+                fontWeight="600"
+              >
                 {year}
               </text>
             </g>
           ))}
 
-          <line x1={padding.left} y1={padding.top} x2={padding.left} y2={height - padding.bottom} stroke="rgba(31, 26, 22, 0.3)" strokeWidth="1.5" />
-          <line x1={padding.left} y1={height - padding.bottom} x2={width - padding.right} y2={height - padding.bottom} stroke="rgba(31, 26, 22, 0.3)" strokeWidth="1.5" />
+          <line
+            x1={padding.left}
+            y1={padding.top}
+            x2={padding.left}
+            y2={height - padding.bottom}
+            stroke="rgba(31, 26, 22, 0.3)"
+            strokeWidth="1.5"
+          />
+          <line
+            x1={padding.left}
+            y1={height - padding.bottom}
+            x2={width - padding.right}
+            y2={height - padding.bottom}
+            stroke="rgba(31, 26, 22, 0.3)"
+            strokeWidth="1.5"
+          />
 
           {series.map((s) => {
-            // Build a per-run path so nulls create gaps, and draw dots at real points.
-            const runs: Array<{ d: string }> = [];
-            let run = '';
-            s.values.forEach((v, i) => {
-              if (v === null) {
-                if (run) runs.push({ d: run });
-                run = '';
-                return;
-              }
-              run += `${run === '' ? 'M' : ' L'} ${xFor(i).toFixed(2)} ${yFor(v).toFixed(2)}`;
-            });
-            if (run) runs.push({ d: run });
-
+            const asError = s.points.map((p) => ({ year: p.year, err: 100 - p.score }));
+            const d = asError
+              .map(
+                (pt, i) =>
+                  `${i === 0 ? 'M' : 'L'} ${xFor(pt.year).toFixed(2)} ${yFor(pt.err).toFixed(2)}`,
+              )
+              .join(' ');
+            const first = asError[0];
+            const last = asError[asError.length - 1];
             return (
               <g key={s.key}>
-                {runs.map((r, i) => (
-                  <path key={i} d={r.d} fill="none" stroke={s.color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path
+                  d={d}
+                  fill="none"
+                  stroke={s.color}
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                {asError.map((pt) => (
+                  <circle
+                    key={pt.year}
+                    cx={xFor(pt.year)}
+                    cy={yFor(pt.err)}
+                    r={5}
+                    fill={s.color}
+                  >
+                    <title>{`${s.label} ${pt.year}: ${(100 - pt.err).toFixed(1)}% score / ${pt.err.toFixed(1)}% error`}</title>
+                  </circle>
                 ))}
-                {s.values.map((v, i) =>
-                  v === null ? null : (
-                    <circle key={i} cx={xFor(i)} cy={yFor(v)} r={4} fill={s.color}>
-                      <title>{`${s.label} ${years[i]}: ${v}`}</title>
-                    </circle>
-                  ),
-                )}
+                <text
+                  x={xFor(first.year) + 10}
+                  y={yFor(first.err) - 10}
+                  fill={s.color}
+                  fontSize="14"
+                  fontWeight="600"
+                >
+                  {first.err.toFixed(0)}%
+                </text>
+                <text
+                  x={xFor(last.year) + 14}
+                  y={yFor(last.err) + 5}
+                  fill={s.color}
+                  fontSize="17"
+                  fontWeight="700"
+                >
+                  {s.label}
+                </text>
+                <text
+                  x={xFor(last.year) + 14}
+                  y={yFor(last.err) + 24}
+                  fill={s.color}
+                  fontSize="13"
+                  fontStyle="italic"
+                  opacity="0.85"
+                >
+                  {s.note} · {last.err.toFixed(1)}%
+                </text>
               </g>
             );
           })}
-
-          <text x={18} y={height / 2} fill="rgba(31, 26, 22, 0.7)" fontSize="12" transform={`rotate(-90 18 ${height / 2})`}>
-            Score (0–100)
-          </text>
-          <text x={width / 2} y={height - 4} fill="rgba(31, 26, 22, 0.7)" fontSize="12" textAnchor="middle">
-            Year
-          </text>
         </svg>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem 1.4rem' }}>
-          {series.map((s) => (
-            <div key={s.key} className="model-progress-panel__legend-item">
-              <span style={{ width: '2.5rem', height: '0', borderTop: `3px solid ${s.color}`, display: 'inline-block' }} />
-              <span>{s.label}</span>
-            </div>
-          ))}
-        </div>
-
-        <details className="model-progress-panel__details">
-          <summary>Underlying milestone values</summary>
-          <table className="markdown-table">
-            <thead className="markdown-thead">
-              <tr className="markdown-tr">
-                <th className="markdown-th">Benchmark</th>
-                {years.map((y) => (
-                  <th key={y} className="markdown-th" style={{ textAlign: 'right' }}>{y}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody className="markdown-tbody">
-              {series.map((s) => (
-                <tr key={s.key} className="markdown-tr">
-                  <td className="markdown-td">{s.label}</td>
-                  {s.values.map((v, i) => (
-                    <td key={i} className="markdown-td" style={{ textAlign: 'right' }}>
-                      {v === null ? '—' : v}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </details>
-
-        <SourceLine ids={[
-          'benchmarksLocal',
-          'mythosCard',
-          'sweBenchSite',
-          'sweBenchVerified',
-          'gpqaPaper',
-          'openAIGpt4Report',
-          'aiIndex2025',
-        ]} />
+        <SourceLine
+          ids={[
+            'benchmarksLocal',
+            'mythosCard',
+            'sweBenchSite',
+            'sweBenchVerified',
+            'gpqaPaper',
+            'aiIndex2025',
+          ]}
+        />
       </div>
     </div>
   );
