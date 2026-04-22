@@ -77,23 +77,25 @@ sweBenchVerified, sweBenchSite, gpqaPaper, aiIndex2025
 
 ---
 
+## The Three Benchmarks
+
+# What we're measuring and how
+
+- **SWE-bench Verified** — patch a real GitHub issue so the project's own hidden unit tests pass. *Software engineering.*
+- **GPQA Diamond** — graduate-level physics, biology, and chemistry questions written to be Google-resistant. *Hard-science reasoning.*
+- **MMLU** — 57 academic and professional subjects. *Broad knowledge.*
+
+Each dot on the next slide is the **best publicly reported score**
+from a frontier lab — OpenAI, Anthropic, Google, DeepSeek — at the
+end of that year.
+
+```source-line
+sweBenchVerified, gpqaPaper, aiIndex2025
+```
+
+---
+
 ## What Just Happened, 2023–2026
-
-Three public benchmarks, three unrelated kinds of work. Each point
-below is the **best publicly reported score** from a frontier lab
-(OpenAI, Anthropic, Google, DeepSeek) at the end of that year.
-
-- **SWE-bench Verified** — the model is handed a real GitHub issue
-  from a real open-source repo and must write a patch that passes the
-  project's own hidden unit tests.
-- **GPQA Diamond** — hard-science graduate-level multiple-choice
-  questions in physics, biology, and chemistry, designed to be
-  Google-resistant.
-- **MMLU** — broad knowledge across 57 academic and professional
-  subjects, the longstanding "general intelligence" yardstick.
-
-The horizontal band at 90% is where further gains stop separating
-models. All three are inside it.
 
 ```model-progress
 ```
