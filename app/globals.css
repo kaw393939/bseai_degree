@@ -2067,7 +2067,9 @@ body.is-middle-slide {
     margin-top: 0.9rem;
   }
 
-  .site-footer--presentation {
+  /* On short viewports, keep the footer only as chrome for first/last
+     slides; middle-slide hiding is already handled by the footer gate. */
+  body.is-middle-slide .site-footer--presentation {
     display: none;
   }
 }
