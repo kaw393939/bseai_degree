@@ -9,6 +9,8 @@ layout: "presentation"
 
 # Launching Fall 2026
 
+*A first draft of an engineering degree for the age of judgment.*
+
 The B.S. in Enterprise AI is a studio-based, enterprise-facing degree for
 the people who will design, operate, integrate, and govern AI-enabled
 systems in real organizations.
@@ -168,6 +170,21 @@ mythosCard, graceHLMI2023, aiIndex2025, assistantInterpretation
 ```cta
 [Read the full scenario analysis](/model-progress-research)
 ```
+
+---
+
+## The Real Shift Isn't Skills. It's the Ratio.
+
+# 40% skill · 60% judgment
+
+AI collapses the price of skill. It raises the price of judgment, taste,
+and the habit of learning.
+
+A degree for this decade has to change the ratio — deliberately,
+visibly, in every studio.
+
+> Skill is the carrier wave. Human formation is the signal.
+> BSEAI is engineered around that inversion.
 
 ---
 
@@ -361,6 +378,8 @@ linkedinLabor2026, openAIApplied, scaleFDEPosting, openAIFDEPosting, salesforceA
 
 ## The Studio Spine Builds toward That Work
 
+# The studios are where the 60% gets built
+
 ```studio-spine
 ```
 
@@ -497,22 +516,80 @@ mythosCard
 
 ---
 
+## Who's Enrolling
+
+# 100+ majors, first semester, Fall 2026
+
+They chose an engineering degree that takes human formation seriously.
+
+They are arriving with the readiness gaps every IT department is
+seeing — and with an appetite for work that matters. The studio spine
+is built for who they actually are, not who we wish they were.
+
+> The first cohort is already enrolled. The question at the retreat is
+> no longer *should we build this.* It is *what does our department
+> become now that it exists.*
+
+---
+
+## Three Things I Learned Building This
+
+# A field report from twenty-three years of teaching and a year of building with AI every day
+
+1. **AI shifts economic value from skill to human quality.** The
+   curriculum has to shift the ratio — 40/60 — or it is obsolete on
+   delivery. Every syllabus is now a wager about which side of that
+   ratio you are training for.
+2. **Autodidacts are not told into existence. They are formed.** By
+   studios where the only way through is to learn something no one
+   assigned. You cannot lecture someone into independent learning. You
+   can only design the room they learn it in.
+3. **The next draft of this degree will be written with humanities and
+   business colleagues — not around them.** The lunchroom conversations
+   are where the second draft is already starting. Judgment, taste,
+   ethics, and stakeholder translation are not electives to this work.
+   They are the work.
+
+---
+
+## What I'd Ask of Colleagues
+
+# Four asks, all low-stakes, all serious
+
+1. **Come to lunch.** Tell me what your discipline insists a graduate
+   must become. Not what we test for — what you actually think makes
+   someone educated in your field.
+2. **Send me one text, one concept, one method** you wish every student
+   carried into the workforce. I will find a studio to put it in.
+3. **Guest-visit a studio** when the project touches your field. One
+   visit. One critique. Students remember those conversations for
+   years.
+4. **Help me write the second draft.** This is a first draft. It will
+   be wrong in ways I cannot see from inside IT. The degree gets
+   better every time someone outside the department makes it better.
+
+> The degree is approved. The cohort is enrolled. The work from here
+> is not recruitment. It is collaboration.
+
+---
+
 ![bg](/images/media/modules/generated/era-2-field-formation.webp)
 
-## Keep the Discussion Going
+## Help Me Write the Second Draft
 
-# Join the faculty working conversation
+# The conversation continues
 
-Use the Discord to discuss AI, curriculum development, and ongoing
-faculty collaboration.
+This first draft shipped with a 100+ student cohort. The second draft
+gets written with colleagues across the university — and with anyone
+reading this who wants to build the age of judgment with us.
 
 ![BSEAI Discord QR](/images/qr/bseai-discord.svg)
 
-Studio Ordo's public educational channel launches this summer, and the
-conversation should continue there as well.
+Join the faculty Discord. Visit Studio Ordo. Bring your discipline to
+the studios.
 
 ```cta
 [Join the BSEAI Discord](https://discord.gg/PuKVYQ86ms)
+[Read about the author](/author)
 [Visit studioordo.com](https://studioordo.com)
-[Follow Studio Ordo on YouTube](https://www.youtube.com/@studioordo)
 ```
