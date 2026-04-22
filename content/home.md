@@ -451,16 +451,40 @@ deepResearch3, njitBSEAIProgramPage, linkedinLabor2026
 
 # Value lives in the layer that keeps systems honest
 
-- **EU AI Act** — in force 2024-08-01. AI literacy obligations 2025-02-02.
-  GPAI obligations 2025-08-02. High-risk rules scheduled 2026–2027.
-- **NIST AI RMF 1.0 + GenAI Profile** — U.S. federal risk-management
-  reference for design, development, use, and evaluation.
-- **AI incidents in 2024** — 233, up 56.4% year over year (Stanford AI
-  Index 2025).
+Governance is not paperwork. It is the *architecture* that decides
+what an AI system is allowed to do, plus the *evidence* that it did
+what it was supposed to. In 2026, both are now legally required in
+most major markets — and operationally required in almost all of them.
 
-Access control, evaluation sets, human oversight, monitoring, release
-evidence, and incident reporting are now part of how enterprise AI
-systems are operated. This is where most graduates will create value.
+**What graduates will actually be reading and writing:**
+
+- **The EU AI Act** — the world's first comprehensive AI law. *In force
+  August 2024.* AI literacy obligations landed February 2025. General-
+  purpose AI (GPAI) model obligations landed August 2025. High-risk
+  system rules phase in through 2026–2027. Any U.S. company with
+  European customers, users, or data is already inside its scope.
+- **NIST AI RMF 1.0 + Generative AI Profile** — the U.S. federal
+  reference framework for managing AI risk across design, development,
+  deployment, and evaluation. Not a law, but the blueprint federal
+  agencies, insurers, and enterprise buyers increasingly demand as
+  evidence of responsible practice.
+- **OECD AI Principles · UNESCO Recommendation on AI Ethics** — the
+  international norms that multinational employers, NGOs, and
+  universities are aligning procurement and research policy to.
+
+**What this becomes in day-to-day work:**
+
+- **Access control** — who (or what) is allowed to call this model, with what data, under what conditions.
+- **Evaluation sets** — the tests a system must pass before release and re-pass on every update.
+- **Human oversight** — the points in the workflow where a person must review, approve, or override.
+- **Monitoring and drift detection** — telemetry that catches behavior change before users do.
+- **Release evidence** — the documented record that a system met its bar. This is what auditors, regulators, insurers, and enterprise buyers ask for.
+- **Incident reporting** — the process when something goes wrong. In 2024, **233 AI incidents were logged — up 56.4% year over year.** (Stanford AI Index 2025.) That curve is still climbing.
+
+> Graduates who can stand up this layer — who can specify it, build
+> it, instrument it, and produce the evidence it requires — are the
+> ones enterprises cannot hire fast enough. This is the work BSEAI
+> trains them to do.
 
 ```source-line
 euAIAct, nistAIRMF, nistGenAIProfile, aiIndex2025, oecdAIPrinciples, unescoAIEthics
