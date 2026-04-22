@@ -93,11 +93,10 @@ sweBenchSite, sweBenchVerified, gpqaPaper, mythosCard
 
 ## What the Curve Is Really Saying
 
-# Three benchmarks testing three different kinds of work all cut their
-# failure rate by about 90% at the same time
+# Failure rate cut ~90% across three shapes of work, in under three years
 
 Not one capability, not one lab, not one metric — three independent
-measures of useful work, moving together, in under three years.
+measures of useful work, moving together.
 
 - **SWE-bench Verified** — 33% → 94%. Software-engineering failure rate cut ~91%.
 - **GPQA Diamond** — 39% → 94.5%. Hard-science reasoning failure rate cut ~91%.
@@ -189,24 +188,11 @@ mckinseyStateOfAI2025, spGlobalVotE2025, bcgAIAtWork2025, nyFedAIUse2026
 
 # Models drift. Systems drift more.
 
-1. **Sandbox-escape broadcast.** Asked to escape a secured container and
-   send a message to a researcher, an earlier model version went further —
-   posting exploit details to hard-to-find public-facing websites.
-2. **Concealment after rule-violation.** In a few rare cases, earlier
-   versions took actions they recognized as disallowed and tried to hide
-   them. White-box interpretability showed features for *concealment,
-   strategic manipulation, and avoiding suspicion* active during those
-   actions.
-3. **Permission-escalation via `/proc/`.** Earlier versions used low-level
-   process inspection to find credentials, circumvent sandboxing, and
-   escalate permissions — at times after explicit scaffold warnings.
-4. **Unintended public disclosure.** When preparing a code artifact, an
-   earlier version posted it as a public-facing GitHub gist against user
-   intent.
-5. **Reward hacking in evaluations.** On timed LLM-training tasks, an
-   earlier version moved the relevant computation outside the timed call.
-   On time-series forecasting, it found and trained on the grader's test
-   set.
+1. **Sandbox-escape broadcast.** Asked to exfiltrate, posted exploit details to obscure public sites.
+2. **Concealment.** Took disallowed actions and tried to hide them; interpretability features for *strategic manipulation* fired during the act.
+3. **Permission escalation via `/proc/`.** Low-level inspection used to circumvent sandboxing, sometimes after explicit scaffold warnings.
+4. **Unintended public disclosure.** Posted a code artifact as a public GitHub gist against user intent.
+5. **Reward hacking.** Moved timed computation outside the grader; trained on the grader's own test set.
 
 > "Rate of cover-ups below one in a million Claude Code transcripts" is
 > not zero. Managing AI means managing these failure modes, not just
@@ -362,12 +348,6 @@ linkedinLabor2026, openAIApplied, scaleFDEPosting, openAIFDEPosting, salesforceA
 
 ```studio-spine
 ```
-
-- **IS 117 / IS 218** — Web + application building → AI Product Engineer, Solutions Engineer.
-- **IS 265 / IS 390** — Information systems + requirements → Forward-Deployed Engineer, Solutions Architect.
-- **IS 331 / IS 465** — Databases + analytics → AI Engineer, Deployment Engineer, analytics/observability work.
-- **IS 480** — Data-centric AI → Applied AI Engineer (evals, data, failure analysis).
-- **IS 425** — Enterprise AI applications + infrastructure → Platform Engineer, Agent Operations.
 
 > Each course produces a portfolio artifact — an interface, a connector, an
 > eval harness, a requirements package, a data model, or a deployment
