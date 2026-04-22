@@ -1339,6 +1339,72 @@ body.is-middle-slide {
   box-shadow: 0 18px 48px rgba(23, 18, 13, 0.1);
 }
 
+/* ---------- Stat grid (data-forward slides) ----------
+   2-up or 4-up layout of magnitude statistics. Value is display-weight;
+   the label is body; the source is small-caps chrome. */
+.stat-grid {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.stat-grid__item {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid rgba(138, 58, 31, 0.5);
+}
+
+.stat-grid__value {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: rgba(31, 26, 22, 0.92);
+}
+
+.stat-grid__label {
+  font-size: var(--slide-body);
+  line-height: 1.35;
+  color: rgba(31, 26, 22, 0.8);
+  max-width: 32ch;
+}
+
+.stat-grid__source {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(31, 26, 22, 0.45);
+}
+
+/* Dark glass panel variant: lift colors for contrast. */
+.theme-dark .stat-grid__item,
+.glass-panel--dark .stat-grid__item {
+  border-left-color: rgba(230, 180, 140, 0.7);
+}
+.theme-dark .stat-grid__value,
+.glass-panel--dark .stat-grid__value {
+  color: rgba(250, 244, 232, 0.96);
+}
+.theme-dark .stat-grid__label,
+.glass-panel--dark .stat-grid__label {
+  color: rgba(250, 244, 232, 0.82);
+}
+.theme-dark .stat-grid__source,
+.glass-panel--dark .stat-grid__source {
+  color: rgba(250, 244, 232, 0.5);
+}
+
+@media (max-width: 720px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .model-progress-panel__eyebrow {
   color: var(--accent-strong);
   margin-bottom: 0;

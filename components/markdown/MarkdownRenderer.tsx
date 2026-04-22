@@ -10,6 +10,7 @@ import { FrontierAIIntensityIndex } from "../visualization/FrontierAIIntensityIn
 import { ModelProgressResearch } from "../visualization/ModelProgressResearch";
 import { StudioSpineMap } from "../visualization/StudioSpineMap";
 import { RegionalLaborTable } from "../visualization/RegionalLaborTable";
+import { StatGrid, parseStatGrid } from "../visualization/StatGrid";
 import { CallToActionGroup } from "../ui/CallToActionGroup";
 import { SourceLine } from "../ui/SourceLine";
 
@@ -57,6 +58,12 @@ const baseComponents = {
       }
       if (className.includes('language-regional-labor')) {
         return <RegionalLaborTable />;
+      }
+      if (className.includes('language-stat-grid')) {
+        const raw = React.Children.toArray(childElement.props.children)
+          .map((c) => (typeof c === 'string' ? c : ''))
+          .join('');
+        return <StatGrid rows={parseStatGrid(raw)} />;
       }
       if (className.includes('language-cta')) {
         return <CallToActionGroup>{childElement.props.children}</CallToActionGroup>;

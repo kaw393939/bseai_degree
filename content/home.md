@@ -404,34 +404,22 @@ euAIAct, nistAIRMF, nistGenAIProfile, aiIndex2025, oecdAIPrinciples, unescoAIEth
 
 ---
 
-![bg](/images/media/modules/generated/people-institutions-hero.webp)
-
 ## Why This Degree Now
 
 # Builders, not frontier researchers
 
-1. **1.3M+ AI-related job opportunities** created between 2023 and 2025
-   (LinkedIn Labor Market Report, Jan 2026).
-2. **70% YoY growth** in U.S. jobs requiring AI literacy (LinkedIn, same
-   report).
-3. **56% AI-skill wage premium**, with skills changing 66% faster in the
-   most AI-exposed jobs (PwC AI Jobs Barometer 2025).
-4. **~90% of notable AI models in 2024 came from industry** (Stanford AI
-   Index 2025) — frontier model creation is concentrating; enterprise
-   deployment is broadening.
+```stat-grid
+1.3M+ | new AI-related job opportunities, 2023–2025 | LinkedIn Labor Market Report, Jan 2026
+70%   | YoY growth in U.S. jobs requiring AI literacy | LinkedIn, same report
+56%   | AI-skill wage premium, with skills changing 66% faster | PwC AI Jobs Barometer 2025
+~90%  | of notable AI models in 2024 came from industry | Stanford AI Index 2025
+```
 
-> The market does not need thousands of undergraduate frontier researchers.
-> It needs builders who can turn AI into reliable enterprise systems — the
-> layer where implementation is still scarce, and where posted salaries
-> are already high.
+> The frontier is concentrating. Deployment is broadening. The second
+> layer is where the jobs are — and where this degree builds.
 
 ```source-line
 linkedinLabor2026, pwcAIJobsBarometer2025, aiIndex2025, wefFutureOfJobs2025
-```
-
-```cta
-[Open the institutional rationale handout](/why-bseai)
-[See the peer-program comparison](/peer-programs-and-positioning)
 ```
 
 ---
