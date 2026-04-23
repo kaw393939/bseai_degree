@@ -54,16 +54,16 @@
      classroom, not on a code reviewer's laptop. Densest slides (home deck #9,
      #14 with 8-12 short paragraphs) still fit within ~85vh of usable stage
      on a 1080p viewport at these sizes. */
-  --slide-display:  clamp(2.6rem, 5vw, 4.6rem);     /* ~42-74px primary title */
-  --slide-dek:      clamp(1.2rem, 1.7vw, 1.55rem);  /* ~19-25px italic subhead */
-  --slide-eyebrow:  clamp(0.85rem, 1.05vw, 1rem);   /* ~14-16px uppercase tag */
-  --slide-body:     clamp(1.15rem, 1.5vw, 1.4rem);  /* ~18-22px paragraph copy */
-  --slide-list:     clamp(1.1rem, 1.4vw, 1.3rem);   /* ~17.6-21px bullets */
-  --slide-quote:    clamp(1.2rem, 1.6vw, 1.45rem);  /* ~19-23px pullquote */
-  --slide-line-body: 1.5;
-  --slide-line-list: 1.46;
+  --slide-display:  clamp(2.2rem, 3.8vw, 4rem);     /* ~35-64px primary title */
+  --slide-dek:      clamp(1.1rem, 1.5vw, 1.45rem);  /* ~17-23px italic subhead */
+  --slide-eyebrow:  clamp(0.8rem, 1vw, 0.95rem);    /* ~13-15px uppercase tag */
+  --slide-body:     clamp(1rem, 1.25vw, 1.2rem);    /* ~16-19px paragraph copy */
+  --slide-list:     clamp(0.98rem, 1.2vw, 1.15rem); /* ~16-18px bullets */
+  --slide-quote:    clamp(1.05rem, 1.35vw, 1.25rem); /* ~17-20px pullquote */
+  --slide-line-body: 1.45;
+  --slide-line-list: 1.42;
   --slide-line-display: 0.98;
-  --slide-max-measure: 62ch;
+  --slide-max-measure: 60ch;
 
   /* ---------- Shared UI tokens (radius / glass / shadows / tints) ---------- */
   --radius-sm: 6px;
@@ -952,25 +952,27 @@ body.is-middle-slide {
   z-index: 10;
 }
 
-/* Fibonacci Spanning: Text spans 4 columns (wider to avoid word-per-line wrapping) */
+/* Fibonacci Spanning: Text spans 5 columns so display headings have room
+   to breathe instead of wrapping to one word per line on tablet-class
+   widths. Media drops from span 7 to span 6 to compensate. */
 .split-layout__content {
-  grid-column: 1 / span 4;
+  grid-column: 1 / span 5;
   grid-row: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   min-width: 0;
 }
 
 /* Typography for .split-layout__content h1/h2/p is defined in the unified
    slide typography block above. Keep spacing/layout here. */
 
-/* Fibonacci Spanning: Media spans 7 columns (was 8) to give text column room.
-   Bleed is capped so images never extend past the viewport right edge in a way
-   that clips significant content. */
+/* Media spans 6 columns (was 7) to give the text column more horizontal
+   room. Bleed is capped so images never extend past the viewport right edge
+   in a way that clips significant content. */
 .split-layout__media {
-  grid-column: 6 / span 7;
+  grid-column: 7 / span 6;
   grid-row: 1;
   position: relative;
   width: calc(100% + min(5vw, (100vw - var(--grid-max-width)) / 2));
@@ -1013,7 +1015,7 @@ body.is-middle-slide {
   Text: Columns 9-12 (span 4), Media: Columns 1-7 (span 7)
 */
 .split-layout--reversed .split-layout__media {
-  grid-column: 1 / span 7;
+  grid-column: 1 / span 6;
   width: calc(100% + min(5vw, max(0px, (100vw - var(--grid-max-width)) / 2)) + var(--grid-margin));
   max-width: calc(100vw - var(--grid-margin));
   margin-left: calc(-1 * (min(5vw, max(0px, (100vw - var(--grid-max-width)) / 2)) + var(--grid-margin)));
@@ -1025,7 +1027,7 @@ body.is-middle-slide {
 }
 
 .split-layout--reversed .split-layout__content {
-  grid-column: 9 / span 4;
+  grid-column: 8 / span 5;
 }
 
 /* Ambient Tech Aura */
@@ -1043,7 +1045,7 @@ body.is-middle-slide {
   border-radius: 50%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .split-layout {
     display: flex;
     flex-direction: column;
@@ -1055,7 +1057,7 @@ body.is-middle-slide {
     width: 100%;
   }
   .split-layout__media {
-    height: 40vh;
+    height: 38vh;
     border-radius: 1.5rem;
   }
   .split-layout__content h2 {
