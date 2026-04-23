@@ -1,5 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import Link from "next/link";
 import { Heading } from "../ui/heading";
 import { Text } from "../ui/text";
 
@@ -28,7 +29,16 @@ const baseComponents = {
   ol: (props: React.ComponentPropsWithoutRef<"ol">) => <ol className="markdown-ol" {...props} />,
   li: (props: React.ComponentPropsWithoutRef<"li">) => <li className="markdown-li" {...props} />,
   blockquote: (props: React.ComponentPropsWithoutRef<"blockquote">) => <blockquote className="markdown-blockquote" {...props} />,
-  a: (props: React.ComponentPropsWithoutRef<"a">) => <a className="markdown-a" {...props} />,
+  a: ({ href, ...rest }: React.ComponentPropsWithoutRef<"a">) => {
+    const hrefStr = typeof href === "string" ? href : "";
+    // Internal root-relative links must flow through next/link so the
+    // configured basePath is prepended on deploys (e.g. /bseai_degree/*).
+    const isInternal = hrefStr.startsWith("/") && !hrefStr.startsWith("//");
+    if (isInternal) {
+      return <Link href={hrefStr} className="markdown-a" {...rest} />;
+    }
+    return <a className="markdown-a" href={hrefStr} {...rest} />;
+  },
   strong: (props: React.ComponentPropsWithoutRef<"strong">) => <strong className="markdown-strong" {...props} />,
   img: (props: React.ComponentPropsWithoutRef<"img">) => {
     const src = typeof props.src === "string" ? props.src : "";

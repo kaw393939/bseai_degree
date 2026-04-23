@@ -74,8 +74,8 @@ responsibility for the decision.
 
 ## 2035 Scenarios — Three Framings, None Of Them Inevitable
 
-The author's essay ([secondRenaissanceEssay](/docs/_references/2ndren.md))
-proposes three explicit scenarios rather than a single forecast. This is the
+The author's essay on the second renaissance proposes three explicit
+scenarios rather than a single forecast. This is the
 site's discipline for every long-horizon claim.
 
 ### Optimistic — Broad Diffusion, Strong Complementarity
