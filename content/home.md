@@ -9,7 +9,7 @@ layout: "presentation"
 
 # Launching Fall 2026
 
-*A first draft of an engineering degree for the age of judgment.*
+*A first draft of a technology professional degree for the age of AI.*
 
 The B.S. in Enterprise AI is a studio-based, enterprise-facing degree for
 the people who will design, operate, integrate, and govern AI-enabled
